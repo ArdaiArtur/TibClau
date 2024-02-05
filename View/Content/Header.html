@@ -7,39 +7,48 @@
     <title>Bootstrap Header</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
     <!-- Header section using Bootstrap classes -->
     <header class="bg-dark text-light py-3">
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <a class="navbar-brand" href="../index.php?route=Home">Bootstrap Header</a>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+                <a class="navbar-brand" href="../index.php?route=Home"><h3>TibClau</h1></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-left">
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="../index.php?route=us"><i class="fas fa-info-circle"></i> About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2 " href="../index.php?route=tours"><i class="fas fa-calendar-alt"></i> Tours and Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  p-2" href="../index.php?route=archive"><i class="fas fa-archive"></i> Archive</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="../index.php?route=contact"><i class="fas fa-envelope"></i> Contact</a>
+                        </li>
+                       <br>
+                       
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="../index.php?route=us">About Us</a>
+                        <li class="nav-item pt-6 pl-2">
+                            <a class="nav-link   " href="../index.php?route=register"><i class="fas fa-user-plus"></i> Sign in</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="../index.php?route=tours">Tours and Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="../index.php?route=archive">Archive</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="../index.php?route=contact">Contact</a>
-                        </li>
-                        <li class="nav-item pr-3 pt-6">
-                            <a class="nav-link btn btn-primary text-center " href="../index.php?route=register">Sign in</a>
-                        </li>
-                        <li class="nav-item pr-3 pt-6">
-                            <a class="nav-link btn btn-primary text-center " href="../index.php?route=login">Register</a>
+                        <li class="nav-item pl-2 pt-6">
+                            <a class="nav-link  " href="../index.php?route=login"><i class="fas fa-sign-in-alt"></i> Register</a>
                         </li>
                     </ul>
                 </div>
+
             </nav>
+            
         </div>
     </header>
 
