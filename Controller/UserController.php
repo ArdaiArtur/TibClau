@@ -1,8 +1,18 @@
 <?php
-    class UserController
-    {
-        
-        function loginAction()
+class UserController {
+    private $router;
+
+    public function __construct($router) {
+        $this->router = $router;
+    }
+
+    public function handleRequest($route) {
+        $action = $this->router->dispatch($route);
+        $this->$action();
+    }
+
+   
+    function loginAction()
         {   
             $url="View\Login.php";
             header('Location: ' . $url);
@@ -59,6 +69,8 @@
             exit();
         }
 
-    }
+
+
+}
 
 ?>
