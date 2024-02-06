@@ -3,7 +3,7 @@
     $pageTitle = "";
 
     // Set the page content
-    $pageContent = 'Content/WorkUnderProgress-content.php';
+    $pageContent = 'WorkUnderProgress-content.php';
 
     // Include the template file
     include 'template.php';

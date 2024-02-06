@@ -3,7 +3,7 @@
     $pageTitle = "";
 
     // Set the page content
-    $pageContent = 'Content/Home-content.php';
+    $pageContent = 'Home-content.php';
 
     // Include the template file
     include 'template.php';

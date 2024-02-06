@@ -3,7 +3,7 @@
     $pageTitle = "";
 
     // Set the page content
-    $pageContent = 'Content/ToursAndEvents-content.php';
+    $pageContent = 'ToursAndEvents-content.php';
 
     // Include the template file
     include 'template.php';

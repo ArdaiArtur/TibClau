@@ -11,10 +11,16 @@
 
     <!-- Content of your webpage -->
     <?php
-    if (isset($pageContent) && file_exists($pageContent)) {
-        include $pageContent;
+    // Load page content
+    if (isset($pageContent)) {
+        $contentPath = 'Content/' . $pageContent;
+        if (file_exists($contentPath)) {
+            include $contentPath;
+        } else {
+            echo "Error: Page content '$pageContent' not found.";
+        }
     } else {
-        echo "Error: Page content not found.";
+        echo "Error: Page content not specified.";
     }
     ?>
 
