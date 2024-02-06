@@ -3,7 +3,7 @@
     $pageTitle = "";
 
     // Set the page content
-    $pageContent = 'Content/Login-content.php';
+    $pageContent = 'Login-content.php';
 
     // Include the template file
     include 'template.php';
