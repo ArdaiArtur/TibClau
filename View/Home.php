@@ -6,5 +6,5 @@
     $pageContent = 'Home-content.php';
 
     // Include the template file
-    include 'template.php';
+    include 'Template.php';
 ?>
