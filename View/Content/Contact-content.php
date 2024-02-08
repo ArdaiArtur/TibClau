@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <!-- Introductory Text -->
-        <div class="col-md-5 mt-5">
+        <div class="col-md-4 mt-5">
             <div class="card" style="background-image: linear-gradient(to bottom right, #d7f0fa, #e1fae1);">
                 <div class="card-body">
                     <h2 class="card-title">Have a Question?</h2>
@@ -13,7 +13,7 @@
         </div>
 
         <!-- Contact Information -->
-        <div class="col-md-5 mb-5 mt-5">
+        <div class="col-md-4 mb-5 mt-5">
             <div class="card" style="background-image: linear-gradient(to bottom right, #d7f0fa, #e1fae1);">
                 <div class="card-body">
                     <h2 class="card-title">Contact Information</h2>
@@ -51,7 +51,7 @@
                             <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-outline-primary rounded-pill" style="color: black; background-color: transparent; border-color: black; width:200px;" onmouseover="this.style.color='#007bff'; this.style.backgroundColor='transparent'; this.style.borderColor='black';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent'; this.style.borderColor='black';">Submit <i class="fas fa-arrow-right"></i></button>
+                            <button type="submit" class="btn btn btn-outline-light rounded-pill" style=" width:200px;" onmouseover="this.style.color='#007bff'; this.style.backgroundColor='transparent'; this.style.borderColor='black';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent'; this.style.borderColor='black';">Submit <i class="fas fa-arrow-right"></i></button>
                         </div>
 
                     </form>
