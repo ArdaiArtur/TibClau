@@ -18,11 +18,11 @@ class admlogin
         $stmt->bindParam(':username', $nume);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        $password='$$lossL0L';
+        $password='';
         $insertQuery = "INSERT INTO admins ( username, email,password_hash, first_name, last_name) VALUES ( :username, :email,:password_hash, :first_name, :last_name)";
         $insertStmt = $this->con->prepare($insertQuery);
-        $newnume='artur1';
-        $em='krkerdo@gmail.coms';
+        $newnume='';
+        $em='';
         $insertStmt->bindParam(':username', $newnume);
         $hpas=password_hash($password, PASSWORD_DEFAULT);
         $insertStmt->bindParam(':email', $em);
