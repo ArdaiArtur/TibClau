@@ -33,7 +33,7 @@
             <div class="card" style="background-image: linear-gradient(to bottom right, #d7f0fa, #e1fae1);">
                 <div class="card-body">
                     <h2 class="card-title">Contact Us</h2>
-                    <form action="#" method="post">
+                    <form action="../Controller/ContactController.php" method="post">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -51,9 +51,20 @@
                             <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn btn-outline-light rounded-pill" style=" width:200px;" onmouseover="this.style.color='#007bff'; this.style.backgroundColor='transparent'; this.style.borderColor='black';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent'; this.style.borderColor='black';">Submit <i class="fas fa-arrow-right"></i></button>
+                        <button type="submit" name="submit" class="btn btn btn-outline-light rounded-pill" style="width:200px;">Submit <i class="fas fa-arrow-right"></i></button>
                         </div>
+                        <?php
+                            if (isset($_GET['error'])) {
+                                $errorMessage = $_GET['error'];
+                                echo "<p class='text-danger'>$errorMessage</p>";
+                            }
 
+                            // Check for success messages
+                            if (isset($_GET['success'])) {
+                                $successMessage = $_GET['success'];
+                                echo "<p class='text-success'>$successMessage</p>";
+                            }
+                            ?>
                     </form>
                 </div>
             </div>
