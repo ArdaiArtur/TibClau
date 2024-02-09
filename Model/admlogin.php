@@ -10,6 +10,29 @@ class admlogin
         $this->con=$db;
     }
 
+    public function onetimeusercreate()
+    {
+        $query = "SELECT * FROM admins WHERE username = :username";
+        $stmt = $this->con->prepare($query);
+        $nume='artur';
+        $stmt->bindParam(':username', $nume);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $password='$$lossL0L';
+        $insertQuery = "INSERT INTO admins ( username, email,password_hash, first_name, last_name) VALUES ( :username, :email,:password_hash, :first_name, :last_name)";
+        $insertStmt = $this->con->prepare($insertQuery);
+        $newnume='artur1';
+        $em='krkerdo@gmail.coms';
+        $insertStmt->bindParam(':username', $newnume);
+        $hpas=password_hash($password, PASSWORD_DEFAULT);
+        $insertStmt->bindParam(':email', $em);
+        $insertStmt->bindParam(':password_hash', $hpas);
+        $insertStmt->bindParam(':first_name', $user["first_name"]);
+        $insertStmt->bindParam(':last_name', $user["last_name"]);
+        $insertStmt->execute();
+
+    }
+
     public function logget($username, $password)
     {
         
