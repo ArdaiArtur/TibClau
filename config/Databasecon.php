@@ -2,7 +2,7 @@
 
 class Databasecon {
     private $host='localhost';
-    private $db_name='proiectweb';
+    private $db_name='tibclau';
     private $username='root';
     private $password='';
     private $conn;
