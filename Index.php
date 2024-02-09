@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 require_once 'autoload.php'; // Autoload classes
 require_once 'Controller/UserController.php';

@@ -1,4 +1,23 @@
 <!-- template.php -->
+<?php 
+session_start();
+
+// Check if the session variables exist and have the expected values
+if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
+    $userId = $_SESSION["adm_id"];
+    $username = $_SESSION["adm_username"];
+    // Add similar checks for other session variables if needed
+
+    // Output the values for verification
+    echo "User ID: $userId<br>";
+    echo "Username: $username<br>";
+    // Output other session variables as needed
+} else {
+    echo "Session variables not set or incomplete.";
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
