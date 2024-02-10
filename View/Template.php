@@ -9,11 +9,11 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     // Add similar checks for other session variables if needed
 
     // Output the values for verification
-    echo "User ID: $userId<br>";
-    echo "Username: $username<br>";
+   // echo "User ID: $userId<br>";
+   // echo "Username: $username<br>";
     // Output other session variables as needed
 } else {
-    echo "Session variables not set or incomplete.";
+  //  echo "Session variables not set or incomplete.";
 }
 
 
@@ -23,14 +23,18 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title><?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "TibClau"; ?></title>
+    <link rel="stylesheet" href="/TibClau/View/Content/Extracss/header.css">
+    <title><?php echo isset($pageTitl) ? htmlspecialchars($pageTitl) : "TibClau"; ?></title>
 </head>
 <body>
     <?php include 'Content/Header.html'; ?>
-
+    
     <!-- Content of your webpage -->
     <?php
+    if(!empty($pageTitle))
+    include 'Content/StartImg.php';
     // Load page content
     if (isset($pageContent)) {
         $contentPath = 'Content/' . $pageContent;
@@ -45,5 +49,8 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     ?>
 
     <?php include 'Content/Footer.html'; ?>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
 </body>
 </html>
