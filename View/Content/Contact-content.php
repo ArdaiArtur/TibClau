@@ -53,18 +53,20 @@
                         <div class="d-flex justify-content-center">
                         <button type="submit" name="submit" class="btn btn btn-outline-light rounded-pill" style="width:200px;">Submit <i class="fas fa-arrow-right"></i></button>
                         </div>
-                        <?php
+                        <div class="text-center mt-1">
+                            <?php
                             if (isset($_GET['error'])) {
                                 $errorMessage = $_GET['error'];
-                                echo "<p class='text-danger'>$errorMessage</p>";
+                                echo "<h3 class='text-danger'>$errorMessage</h3>";
                             }
 
                             // Check for success messages
                             if (isset($_GET['success'])) {
                                 $successMessage = $_GET['success'];
-                                echo "<p class='text-success'>$successMessage</p>";
+                                echo "<h3 class='text-success'>$successMessage</h3>";
                             }
                             ?>
+                        </div>
                     </form>
                 </div>
             </div>

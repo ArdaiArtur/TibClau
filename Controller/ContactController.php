@@ -18,16 +18,16 @@ if(isset($_POST["submit"])){
 
     switch ($error) {
         case 'Name':
-            header("Location: /TibClau/View/Contact.php?error=NameTooLong");
+            header("Location: /TibClau/View/Contact.php?error=Name Too Long(Max 20 Characters)");
             exit();
         case 'Email':
-            header("Location: /TibClau/View/Contact.php?error=EmailTooLong");
+            header("Location: /TibClau/View/Contact.php?error=Email TooLong(Max 30 Characters)");
             exit();
         case 'Subject':
-            header("Location: /TibClau/View/Contact.php?error=SubjectTooLong");
+            header("Location: /TibClau/View/Contact.php?error=Subject TooLong(Max 30 Characters)");
             exit();
         case 'Message':
-            header("Location: /TibClau/View/Contact.php?error=MessageTooLong");
+            header("Location: /TibClau/View/Contact.php?error=Message Too Long(Max 256 Characters)");
             exit();
         default:
             // No errors, proceed with form submission
