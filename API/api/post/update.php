@@ -21,7 +21,7 @@
   $post->body=$data->body;  
   $post->auth=$data->auth;
   $post->category_id=$data->category_id;
-
+  $post->expire=$data->expire;
   if($post->update())
   {
     echo json_encode( array('message'=>'Post  updated'));

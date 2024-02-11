@@ -26,7 +26,9 @@
     'body' => $post->body,
     'author' => $post->auth,
     'category_id' => $post->category_id,
+    'expire'=>$post->expire,
     'category_name' => $post->category_name
+    
   );
 
  

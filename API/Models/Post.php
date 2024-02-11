@@ -2,7 +2,7 @@
 
 class Psot{
  private $conn;
- private $table='posts';
+ private $table='main_post';
 
 public $id;
 public $category_id;
@@ -11,6 +11,7 @@ public $title;
 public $body;
 public $auth;
 public $created_at;
+public $expire;
 
 
 public function __construct($db)
@@ -27,6 +28,7 @@ public function read()
     p.body,
     p.author,
     p.created_at
+    p.expire
     FROM
     '.$this->table.' p
     LEFT JOIN
@@ -51,6 +53,7 @@ public function read_single()
     p.body,
     p.author,
     p.created_at
+    p.expire
     FROM
     '.$this->table.' p
     LEFT JOIN
@@ -73,7 +76,7 @@ public function read_single()
     $this->auth=$row['author'];
     $this->category_id=$row['category_id'];
     $this->category_name=$row['category_name'];
-  
+    $this->expire=$row['expire'];
 
 
     
@@ -86,19 +89,21 @@ public function create()
     title=:title,
     body=:body,
     author=:auth,
-    category_id=:category_id
+    category_id=:category_id,
+    expire=:expire
     ';
     $statment=$this->conn->prepare($query);
     $this->title=htmlspecialchars(strip_tags($this->title));
     $this->body=htmlspecialchars(strip_tags($this->body));  
     $this->auth=htmlspecialchars(strip_tags($this->auth));
     $this->category_id=htmlspecialchars(strip_tags($this->category_id));
+    $this->expire=htmlspecialchars(strip_tags($this->expire));
 
     $statment->bindParam(':title',$this->title);
     $statment->bindParam(':body',$this->body);
     $statment->bindParam(':auth',$this->auth);
     $statment->bindParam(':category_id',$this->category_id);
-
+    $statment->bindParam(':expire',$this->expire);
     if($statment->execute())
     {
         return true;
@@ -118,7 +123,8 @@ public function update()
     title=:title,
     body=:body,
     author=:auth,
-    category_id=:category_id
+    category_id=:category_id,
+    expire=:expire
     WHERE
         id=:id
     ';
@@ -128,14 +134,14 @@ public function update()
     $this->auth=htmlspecialchars(strip_tags($this->auth));
     $this->category_id=htmlspecialchars(strip_tags($this->category_id));
     $this->id=htmlspecialchars(strip_tags($this->id));
-
+    $this->expire=htmlspecialchars(strip_tags($this->expire));
 
     $statment->bindParam(':title',$this->title);
     $statment->bindParam(':body',$this->body);
     $statment->bindParam(':auth',$this->auth);
     $statment->bindParam(':category_id',$this->category_id);
     $statment->bindParam('id',$this->id);
-
+    $statment->bindParam(':expire',$this->expire);
     if($statment->execute())
     {
         return true;
