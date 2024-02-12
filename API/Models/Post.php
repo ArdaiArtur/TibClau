@@ -27,7 +27,7 @@ public function read()
     p.title,
     p.body,
     p.author,
-    p.created_at
+    p.created_at,
     p.expire
     FROM
     '.$this->table.' p
@@ -52,7 +52,7 @@ public function read_single()
     p.title,
     p.body,
     p.author,
-    p.created_at
+    p.created_at,
     p.expire
     FROM
     '.$this->table.' p
