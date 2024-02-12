@@ -30,7 +30,7 @@
     echo json_encode(array('message'=>'error post not created'));
   }
   
-  $post->title=$data->title;
+  
 
 
   ?>

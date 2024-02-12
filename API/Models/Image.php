@@ -79,9 +79,9 @@ class Image {
 
     // Delete an image
     public function delete() {
-        $query = 'DELETE FROM ' . $this->table . ' WHERE id = ?';
+        $query = 'DELETE FROM ' . $this->table . ' WHERE post_id = ?';
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(1, $this->post_id);
         if($stmt->execute()) {
             return true;
         }
