@@ -28,7 +28,7 @@ if($num>0)
             'body'=>html_entity_decode($body),
             'author'=>$author,
             'category_id'=>$category_id,
-            'expire'=>$post->expire,
+            'expire'=>$expire,
             'category_name'=>$category_name
             
 

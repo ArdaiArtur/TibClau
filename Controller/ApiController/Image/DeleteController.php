@@ -1,8 +1,8 @@
 <?php
 $url="https://localhost/TibClau/API/api/image/delete.php";
-$post_id =isset($_GET['id']) ? $_GET['id'] : 0;
+$post_id =isset($_GET['post_id']) ? $_GET['post_id'] : 0;
  if($post_id!=0){
-$data = array('id' => $post_id);
+$data = array('post_id' => $post_id);
 $json_data = json_encode($data);
 $ch = curl_init();
 
