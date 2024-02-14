@@ -19,8 +19,9 @@ $image = new Image($db);
 $data = json_decode(file_get_contents("php://input"));
 
 // Check if the required fields are present in the JSON data
-if (!empty($data->post_id) && !empty($data->image_url)) {
+if (!empty($data->id) && !empty($data->post_id) && !empty($data->image_url)) {
     // Set properties of the Image object
+    $image->id = $data->id;
     $image->post_id = $data->post_id;
     $image->image_url = $data->image_url;
 
