@@ -31,7 +31,7 @@
     echo json_encode(array('message'=>'error post not updated'));
   }
   
-  $post->title=$data->title;
+  
 
 
   ?>

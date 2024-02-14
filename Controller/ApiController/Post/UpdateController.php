@@ -4,15 +4,16 @@ $title=isset($_POST['title']) ? $_POST['title'] : '';
 $body=isset($_POST['body']) ? $_POST['body'] : '';
 $author=isset($_POST['auth']) ? $_POST['auth'] : '';
 $category_id=isset($_POST['category_id']) ? $_POST['category_id'] : 0;
-
-if($title!=''&&$body!=''&&$author!=''&&$category_id!=0&&$id!=0)
+$expire=isset($_POST['expire']) ? $_POST['expire'] : null;
+if($title!=''&&$body!=''&&$author!=''&&$category_id!=0&&$id!=0&&$expire!=null)
 {
 $data = array(
     'title' => $title,
     'body' => $body,
     'auth' => $author,
     'category_id' => $category_id,
-    'id'=>$id
+    'id'=>$id,
+    'expire'=>$expire
 
 );
 
@@ -69,6 +70,9 @@ else if($id==0)
 {
     echo("no id");
 }
-
+else if($expire==null)
+{
+    echo("no date");
+}
 
 ?>
