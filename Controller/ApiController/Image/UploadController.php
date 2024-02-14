@@ -20,7 +20,7 @@ $data = array(
 $json_data = json_encode($data);
 
 // Set the URL of the API endpoint
-$url = 'https://localhost/PHP%20REST%20API%20tutorial/api/post/create.php';
+$url = 'https://localhost/TibClau/API/api/image/create.php';
 
 // Initialize a cURL session
 $ch = curl_init();

@@ -1,5 +1,5 @@
 <?php
-$url="https://localhost/PHP%20REST%20API%20tutorial/api/post/delete.php";
+$url="https://localhost/TibClau/API/api/post/delete.php";
 $post_id =isset($_GET['id']) ? $_GET['id'] : 0;
  if($post_id!=0){
 $data = array('id' => $post_id);

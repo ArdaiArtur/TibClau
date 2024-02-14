@@ -1,6 +1,6 @@
 <?php
 
-$url = "https://localhost/PHP%20REST%20API%20tutorial/api/post/read.php";
+$url = "https://localhost/TibClau/API/api/image/read.php";
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';//daca are valoare primeste valoare daca nu nu
 //curl request pentru api
 $curl = curl_init();

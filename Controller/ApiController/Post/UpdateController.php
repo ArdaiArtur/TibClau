@@ -21,7 +21,7 @@ $data = array(
 $json_data = json_encode($data);
 
 
-$url = 'https://localhost/PHP%20REST%20API%20tutorial/api/post/update.php';
+$url = 'https://localhost/TibClau/API/api/post/update.php';
 
 // start cUel
 $ch = curl_init();
