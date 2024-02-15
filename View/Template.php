@@ -30,7 +30,7 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
 </head>
 <body>
     <?php include 'Content/Header.html'; ?>
-    
+    <div class="container-fluid px-0">
     <!-- Content of your webpage -->
     <?php
     if(!empty($pageTitle) && !empty($imgName)) {
@@ -48,7 +48,7 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
         echo "Error: Page content not specified.";
     }
     ?>
-
+</div>
     <?php include 'Content/Footer.html'; ?>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
