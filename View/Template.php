@@ -33,8 +33,9 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     
     <!-- Content of your webpage -->
     <?php
-    if(!empty($pageTitle))
-    include 'Content/StartImg.php';
+    if(!empty($pageTitle) && !empty($imgName)) {
+        include 'Content/StartImg.php';
+    }
     // Load page content
     if (isset($pageContent)) {
         $contentPath = 'Content/' . $pageContent;
