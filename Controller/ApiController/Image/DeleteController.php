@@ -1,34 +1,40 @@
 <?php
-$url="https://localhost/TibClau/API/api/image/delete.php";
-$post_id =isset($_GET['post_id']) ? $_GET['post_id'] : 0;
- if($post_id!=0){
-$data = array('post_id' => $post_id);
-$json_data = json_encode($data);
-$ch = curl_init();
 
-// Set the cURL options
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Content-Length: ' . strlen($json_data)
+// API endpoint URL
+$url = "https://localhost/TibClau/API/api/image/delete.php";
+
+// Data to be sent in the request
+$data = array(
+    'post_id' => 1 // Specify the post ID for which you want to delete the images
+);
+
+// Initialize cURL session
+$curl = curl_init();
+
+// Set cURL options
+curl_setopt_array($curl, array(
+    CURLOPT_URL => $url,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => "DELETE",
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => array(
+        'Content-Type: application/json'
+    )
 ));
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-// Send the request and get the response
-$response = curl_exec($ch);
+// Execute cURL request
+$response = curl_exec($curl);
 
 // Check for errors
 if ($response === false) {
-    echo 'cURL Error: ' . curl_error($ch);
+    echo "Error: " . curl_error($curl);
 } else {
-    // Print the response
-    var_dump($response);
+    // Print response
+    echo $response;
 }
 
-// Close the cURL resource
-curl_close($ch);
- }
+// Close cURL session
+curl_close($curl);
+
 ?>

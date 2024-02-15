@@ -1,19 +1,8 @@
 <?php
-$title=isset($_POST['title']) ? $_POST['title'] : '';
-$body=isset($_POST['body']) ? $_POST['body'] : '';
-$author=isset($_POST['auth']) ? $_POST['auth'] : '';
-$category_id=isset($_POST['category_id']) ? $_POST['category_id'] : 0;
-$expire=isset($_POST['expire']) ? $_POST['expire'] : null;
-if($title!=''&&$body!=''&&$author!=''&&$category_id!=0&&$expire!=null)
-{
+// Define the data to be sent to the API endpoint
 $data = array(
-    'title' => $title,
-    'body' => $body,
-    'auth' => $author,
-    'category_id' => $category_id,
-    'expire'=>$expire
-
-
+    'post_id' => 1, // Example post ID
+    'image_url' => 'https://example.com/image.jpg' // Example image URL
 );
 
 // Encode the data as JSON
@@ -28,7 +17,6 @@ $ch = curl_init();
 // Set the cURL options
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -48,26 +36,4 @@ if (curl_errno($ch)) {
 
 // Close the cURL session
 curl_close($ch);
-}
-else if($title=='')
-{
-echo("no title");
-}
-else if($body=='')
-{
-    echo("no body");
-}
-else if($author=='')
-{
-    echo("no author");
-}
-else if($category_id==0)
-{
-    echo("no chategory id");
-}
-else if($expire==null)
-{
-    echo("no date");
-}
-
 ?>

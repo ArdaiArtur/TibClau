@@ -1,78 +1,42 @@
 <?php
-$id=isset($_POST['ID']) ? $_POST['ID'] : 0;
-$title=isset($_POST['title']) ? $_POST['title'] : '';
-$body=isset($_POST['body']) ? $_POST['body'] : '';
-$author=isset($_POST['auth']) ? $_POST['auth'] : '';
-$category_id=isset($_POST['category_id']) ? $_POST['category_id'] : 0;
-$expire=isset($_POST['expire']) ? $_POST['expire'] : null;
-if($title!=''&&$body!=''&&$author!=''&&$category_id!=0&&$id!=0&&$expire!=null)
-{
-$data = array(
-    'title' => $title,
-    'body' => $body,
-    'auth' => $author,
-    'category_id' => $category_id,
-    'id'=>$id,
-    'expire'=>$expire
 
+// API endpoint URL
+$url = "https://localhost/TibClau/API/api/image/update.php";
+
+// Data to be sent in the request
+$data = array(
+    'id' => 1, // Specify the image ID you want to update
+    'post_id' => 1, // Specify the post ID for which the image belongs
+    'image_url' => "https://example.com/new_image.jpg" // Specify the new image URL
 );
 
-// Encode the data as JSON
-$json_data = json_encode($data);
+// Initialize cURL session
+$curl = curl_init();
 
-
-$url = 'https://localhost/TibClau/API/api/image/update.php';
-
-// start cUel
-$ch = curl_init();
-
-// setaza cURL le setezi la ce ai nevoie
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Content-Length: ' . strlen($json_data)
+// Set cURL options
+curl_setopt_array($curl, array(
+    CURLOPT_URL => $url,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => "PUT",
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => array(
+        'Content-Type: application/json'
+    )
 ));
 
-// executa curl ul
-$response = curl_exec($ch);
+// Execute cURL request
+$response = curl_exec($curl);
 
-// daca exista errori
-if (curl_errno($ch)) {
-    echo 'Error: ' . curl_error($ch);
+// Check for errors
+if ($response === false) {
+    echo "Error: " . curl_error($curl);
 } else {
-    echo 'Response: ' . $response;
+    // Print response
+    echo $response;
 }
 
-//close curl
-curl_close($ch);
-}
-else if($title=='')
-{
-echo("no title");
-}
-else if($body=='')
-{
-    echo("no body");
-}
-else if($author=='')
-{
-    echo("no author");
-}
-else if($category_id==0)
-{
-    echo("no chategory id");
-}
-else if($id==0)
-{
-    echo("no id");
-}
-else if($expire==null)
-{
-    echo("no date");
-}
+// Close cURL session
+curl_close($curl);
 
 ?>

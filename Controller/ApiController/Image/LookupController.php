@@ -1,8 +1,12 @@
 <?php
 
-$url = "https://localhost/TibClau/API/api/image/read.php";
-$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';//daca are valoare primeste valoare daca nu nu
-//curl request pentru api
+// Specify the post ID for which you want to retrieve images
+$postId = isset($_GET['post_id']) ? $_GET['post_id'] : '';
+
+// Construct the API endpoint URL with the post ID as a parameter
+$url = "https://localhost/TibClau/API/api/image/read.php?post_id=" . $postId;
+
+// Make a cURL request to the image API endpoint
 $curl = curl_init();
 curl_setopt_array($curl, [
     CURLOPT_URL => $url,
@@ -15,7 +19,7 @@ curl_setopt_array($curl, [
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
 ]);
-//executa si verifica daca e o eroare
+
 $response = curl_exec($curl);
 $err = curl_error($curl);
 $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
@@ -29,41 +33,17 @@ if ($err) {
 } else {
     // echo $response;
 }
-//ia datele daca nu e null
+
+// Decode the API response
 $data = json_decode($response, true);
+
+// Check if the response contains image data
 if (isset($data['data'])) {
-    $dataok = $data['data']; // access the data array
+    $images = $data['data']; // Access the image data array
+    // Now you can iterate over the $images array to display or process each image
 } else {
-    $dataok = $data;
+    // Handle the case where no images are found for the specified post
+    echo "No images found for post ID: " . $postId;
 }
 
-
-//cauta dupa titlu si author
-function getMatchingPosts($posts, $searchTerm) {
-    $matching = array();
-    foreach ($posts as $post) {
-        if (stripos($post["title"], $searchTerm) !== false || stripos($post["author"], $searchTerm) !== false) {
-            $matching[] = $post;
-        }
-    }
-    if (empty($matching)) {
-        return null; // No matching posts found
-    } else {
-        return $matching;
-    }
-}
-//afiseaza ce gaseste
-$matchingPosts = getMatchingPosts($dataok, $searchTerm);
-/*
-if ($matchingPosts === null) {
-    echo "No matching posts found.";
-} else {
-    foreach ($matchingPosts as $post) {
-        echo "<h3>" . htmlspecialchars($post["title"]) . "</h3>";
-        echo "<p>" . htmlspecialchars($post["body"]) . "</p>";
-        echo "<p>By " . htmlspecialchars($post["author"]) . "</p>";
-        echo "<hr>";
-    }
-}
-*/
 ?>
