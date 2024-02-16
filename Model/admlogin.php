@@ -84,7 +84,7 @@ class admlogin
             $_SESSION["adm_email"] = $existsvalid["email"];
             $_SESSION["adm_first_name"] = $existsvalid["first_name"];
             $_SESSION["adm_last_name"] = $existsvalid["last_name"];
-            header("location: ../index.php?route=home");
+            header("location: ../admcontrollpart/admmainpage.php");
         } else {
             // Login failed, redirect to login page with error message
             header("location: admlogadm.php?error=WrongCredentials");
