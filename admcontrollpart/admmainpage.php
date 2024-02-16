@@ -88,24 +88,48 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
 
 <!-- Upload Modal -->
 <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uploadModalLabel">Upload Form</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Upload form content -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadModalLabel">Create Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="../admcontrollpart/ApiController/Post/UploadController.php">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="body">Body</label>
+                        <textarea class="form-control" id="body" name="body"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="category_id">Category</label>
+                        <select class="form-control" id="category_id" name="category_id">
+                            <option value="">Select Category</option>
+                            <option value="1">Event</option>
+                            <option value="2">Text</option>
+                            <option value="3">Notice</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expire">Expiration Date</label>
+                        <input type="date" class="form-control" id="expire" name="expire">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Post</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
+
     <!-- End Upload Modal -->
 
     <!-- Update Modal -->

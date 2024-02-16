@@ -1,7 +1,8 @@
 <?php
+session_start();
 $title=isset($_POST['title']) ? $_POST['title'] : '';
 $body=isset($_POST['body']) ? $_POST['body'] : '';
-$author=isset($_POST['auth']) ? $_POST['auth'] : '';
+$author = isset($_SESSION["adm_username"]) ? $_SESSION["adm_username"] : '';
 $category_id=isset($_POST['category_id']) ? $_POST['category_id'] : 0;
 $expire=isset($_POST['expire']) ? $_POST['expire'] : null;
 if($title!=''&&$body!=''&&$author!=''&&$category_id!=0&&$expire!=null)
@@ -69,5 +70,5 @@ else if($expire==null)
 {
     echo("no date");
 }
-
+header("location: /TibClau/admcontrollpart/admmainpage.php");
 ?>
