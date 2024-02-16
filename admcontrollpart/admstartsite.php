@@ -1,6 +1,7 @@
 <?php
     require_once '../config/Databasecon.php';
     require_once '../Model/admlogin.php';
+    session_set_cookie_params(1800);
     session_start();
     if(isset($_POST["submit"])){
   
