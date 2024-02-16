@@ -33,62 +33,47 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     <title>Admin Dashboard</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-secondary">
 
 <div class="container-fluid">
     <div class="row">
         <!-- Sidebar -->
-        <div class="col-md-3 col-lg-2 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+        <div class="col-md-3 col-lg-2 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark position-fixed vh-100">
             <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span class="fs-4">Admin Panel</span>
             </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
+                <!-- Your existing menu items -->
+               
+                <!-- Add upload, update, delete buttons -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link active" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                        Orders
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                        Products
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                        Customers
-                    </a>
-                </li>
+                        <button class="btn btn-light text-dark mb-2 btn-block" data-toggle="modal" data-target="#uploadModal"><i class="fas fa-upload"></i> Upload</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light text-dark mb-2 btn-block" data-toggle="modal" data-target="#updateModal"><i class="fas fa-edit"></i> Update</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light text-dark mb-2 btn-block" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash-alt"></i> Delete</button>
+                    </li>
             </ul>
             <hr>
-            <div class="dropdown pb-5 ">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#person-circle"></use></svg>
-        <strong>mdo</strong>
-    </button>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">Change Password</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign Out</a></li>
-    </ul>
-</div>
+            <div class="dropdown pb-5">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#person-circle"></use></svg>
+                    <strong><?php echo $username; ?></strong>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#" id="signOutBtn">Sign Out</a></li>
+                </ul>
+            </div>
         </div>
         <!-- End Sidebar -->
 
@@ -101,11 +86,55 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     </div>
 </div>
 
+<!-- Upload Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">Upload Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Upload form content -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Upload Modal -->
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <!-- Update modal content -->
+        </div>
+    </div>
+    <!-- End Update Modal -->
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <!-- Delete modal content -->
+        </div>
+    </div>
+
 <script>
-    window.addEventListener('beforeunload', function(event) {
-        // Send an AJAX request to destroy the session
+    document.getElementById('signOutBtn').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        // Send an AJAX request to logout
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/TibClau/admcontrollpart/destroy_session.php', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                // Redirect to login page after successful logout
+                window.location.href = '/TibClau/admcontrollpart/admlogadm.php';
+            }
+        };
         xhr.send();
     });
 </script>
