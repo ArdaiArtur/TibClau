@@ -139,7 +139,7 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="../admcontrollpart/ApiController/Post/UploadController.php">
+                <form method="post" action="../admcontrollpart/ApiController/Post/UploadController.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" name="title">
@@ -162,7 +162,13 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
                         <label for="expire">Expiration Date</label>
                         <input type="date" class="form-control" id="expire" name="expire">
                     </div>
-                    <button type="submit" class="btn btn-primary">Create Post</button>
+                    <div class="form-group">
+                        <label for="image">Upload Image</label>
+                        <input type="file" class="form-control-file" id="image" name="image">
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">Create Post</button>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
