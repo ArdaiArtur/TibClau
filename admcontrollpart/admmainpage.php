@@ -79,25 +79,26 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
 
         <!-- Main Content -->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-    <div class="container">
-        <div class="row">
-            <?php
-            if ($matchingPosts === null) {
-                echo "<div class='col-2 mb-3'><a href='#' class='list-group-item list-group-item-action disabled'>No matching posts found.</a></div>";
-            } else {
-                foreach ($matchingPosts as $post) {
-                    echo "<div class='col-lg-2 mb-3'>";
-                    echo "<a href='#' class='list-group-item list-group-item-action' data-post-id='" . htmlspecialchars($post["id"]) . "'>";
-                    echo "<h3 class='mb-1'>" . htmlspecialchars($post["title"]) . "</h3>";
-                    echo "<p class='mb-1'>" . htmlspecialchars($post["body"]) . "</p>";
-                    echo "<p class='mb-1'>By " . htmlspecialchars($post["author"]) . "  ID " . htmlspecialchars($post["id"]) . " End Date " . htmlspecialchars($post["expire"]) . "</p>";
-                    echo "</a>";
-                    echo "</div>";
+        <div class="container">
+            <div class="row">
+                <?php
+                if ($matchingPosts === null) {?>
+                    <div class='col-2 mb-3'><a href='#' class='list-group-item list-group-item-action disabled'>No matching posts found.</a></div>
+                <?php } else {
+                    foreach ($matchingPosts as $post) {  $img_url = !empty($post["img_url"]) ? htmlspecialchars($post["img_url"]) : '\TibClau\Image\PostIMG\no.jpg';?>
+                        <div class='col-lg-2 mb-3'>
+                            <a href='#' class='list-group-item list-group-item-action' data-post-id='<?php echo htmlspecialchars($post["id"]); ?>'>
+                                <img src='<?php echo $img_url;; ?>' alt='Post Image' class='img-fluid'>
+                                <h3 class='mb-1'><?php echo htmlspecialchars($post["title"]); ?></h3>
+                                <p class='mb-1'><?php echo htmlspecialchars($post["img_url"]); ?></p>
+                            </a>
+                        </div>
+                    <?php
+                    }
                 }
-            }
-            ?>
+                ?>
+            </div>
         </div>
-    </div>
 </main>
 <div id="selectedPostId"></div>
 <script>

@@ -18,13 +18,13 @@ if(isset($_FILES['image'])) {
         if (!file_exists($upload_directory)) {
             mkdir($upload_directory, 0777, true);
         }
-
+        $good_path="../Image/PostIMG/".$image_name;
         // Move the uploaded file to the desired location
         $upload_path = $upload_directory . $image_name;
         move_uploaded_file($image_tmp, $upload_path);
-
+        
         // Add the image URL to the data array
-        $data['img_url'] = $upload_path;
+        $data['img_url'] = $good_path;
     } else {
         echo "Error: Only JPEG, PNG, and GIF images are allowed.";
     }
@@ -47,7 +47,7 @@ $data = array(
     'auth' => $author,
     'category_id' => $category_id,
     'expire'=>$expire,
-    'img_url' => $upload_path
+    'img_url' => $good_path
 
 );
 
