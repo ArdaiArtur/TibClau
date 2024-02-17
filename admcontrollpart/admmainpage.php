@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+include_once 'ApiController\Post\LookupController.php';
 
 // Check if the session variables exist and have the expected values
 if (!isset($_SESSION["adm_id"]) || !isset($_SESSION["adm_username"])) {
@@ -79,9 +79,51 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
 
         <!-- Main Content -->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <h1 class="mt-4">Welcome to the Admin Dashboard</h1>
-            <p>This is the main content area where you can view, create, update, and delete posts.</p>
-        </main>
+    <div class="container">
+        <div class="row">
+            <?php
+            if ($matchingPosts === null) {
+                echo "<div class='col-2 mb-3'><a href='#' class='list-group-item list-group-item-action disabled'>No matching posts found.</a></div>";
+            } else {
+                foreach ($matchingPosts as $post) {
+                    echo "<div class='col-lg-2 mb-3'>";
+                    echo "<a href='#' class='list-group-item list-group-item-action' data-post-id='" . htmlspecialchars($post["id"]) . "'>";
+                    echo "<h3 class='mb-1'>" . htmlspecialchars($post["title"]) . "</h3>";
+                    echo "<p class='mb-1'>" . htmlspecialchars($post["body"]) . "</p>";
+                    echo "<p class='mb-1'>By " . htmlspecialchars($post["author"]) . "  ID " . htmlspecialchars($post["id"]) . " End Date " . htmlspecialchars($post["expire"]) . "</p>";
+                    echo "</a>";
+                    echo "</div>";
+                }
+            }
+            ?>
+        </div>
+    </div>
+</main>
+<div id="selectedPostId"></div>
+<script>
+    // Get the list group element
+    const postList = document.querySelector('.container');
+
+    // Get the element where the selected post ID will be displayed
+    const selectedPostIdElement = document.getElementById('selectedPostId');
+
+    // Add click event listener to the list group
+    postList.addEventListener('click', function(event) {
+        // Find the closest ancestor button element with the class 'list-group-item'
+        const listItemButton = event.target.closest('.list-group-item');
+
+        // Check if a list-group-item button was clicked
+        if (listItemButton) {
+            // Get the data-post-id attribute value of the closest button element
+            const postId = listItemButton.getAttribute('data-post-id');
+
+            // Update the selected post ID element
+            selectedPostIdElement.textContent = "Selected Post ID: " + postId;
+        }
+    });
+</script>
+
+
         <!-- End Main Content -->
     </div>
 </div>
