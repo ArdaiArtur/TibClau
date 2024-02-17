@@ -20,7 +20,7 @@
   $post->auth=$data->auth;
   $post->category_id=$data->category_id;
   $post->expire=$data->expire;
-  
+  $post->img_url=$data->img_url;
   if($post->create())
   {
     echo json_encode( array('message'=>'Post Created'));

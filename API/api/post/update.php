@@ -22,6 +22,7 @@
   $post->auth=$data->auth;
   $post->category_id=$data->category_id;
   $post->expire=$data->expire;
+  $post->img_url=$data->img_url;
   if($post->update())
   {
     echo json_encode( array('message'=>'Post  updated'));

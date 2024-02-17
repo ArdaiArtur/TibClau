@@ -29,6 +29,7 @@ if($num>0)
             'author'=>$author,
             'category_id'=>$category_id,
             'expire'=>$expire,
+            'img_url'=>$img_url,
             'category_name'=>$category_name
             
 

@@ -27,6 +27,7 @@
     'author' => $post->auth,
     'category_id' => $post->category_id,
     'expire'=>$post->expire,
+    'img_url'=>$post->img_url,
     'category_name' => $post->category_name
     
   );
