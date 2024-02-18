@@ -1,7 +1,7 @@
 <?php
     // Set the page title
     $pageTitle = " ";
-    $imgName = "event";
+    $imgName = "abaut";
     // Set the page content
     $pageContent = 'ToursAndEvents-content.php';
 
