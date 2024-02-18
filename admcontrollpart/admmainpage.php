@@ -48,6 +48,9 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
                 <span class="fs-4">Admin Panel</span>
             </a>
             <hr>
+            <div id="selectedPostId"></div>
+            <div id ="selectedPostUrl"></div>
+            <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <!-- Your existing menu items -->
                
@@ -59,7 +62,7 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
                         <button class="btn btn-light text-dark mb-2 btn-block" data-toggle="modal" data-target="#updateModal"><i class="fas fa-edit"></i> Update</button>
                     </li>
                     <li class="nav-item">
-                        <button class="btn btn-light text-dark mb-2 btn-block" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash-alt"></i> Delete</button>
+                        <button class="btn btn-light text-dark mb-2 btn-block" onclick="submitForm()"><i class="fas fa-trash-alt"></i> Delete</button>
                     </li>
             </ul>
             <hr>
@@ -87,11 +90,10 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
                 <?php } else {
                     foreach ($matchingPosts as $post) {  $img_url = !empty($post["img_url"]) ? htmlspecialchars($post["img_url"]) : '\TibClau\Image\PostIMG\no.jpg';?>
                         <div class='col-lg-2 mb-3'>
-                            <a href='#' class='list-group-item list-group-item-action' data-post-id='<?php echo htmlspecialchars($post["id"]); ?>'>
-                                <img src='<?php echo $img_url;; ?>' alt='Post Image' class='img-fluid'>
-                                <h3 class='mb-1'><?php echo htmlspecialchars($post["title"]); ?></h3>
-                                <p class='mb-1'><?php echo htmlspecialchars($post["img_url"]); ?></p>
-                            </a>
+                            <button type='button' class='list-group-item list-group-item-action' data-post-id='<?php echo htmlspecialchars($post["id"]); ?>' posturl='<?php echo htmlspecialchars($post["img_url"]); ?>'>
+                                <img src='<?php echo htmlspecialchars($post["img_url"]); ?>' alt='Post Image' class='img-fluid'>
+                                <h3 class='mb-1' ><?php echo htmlspecialchars($post["title"]); ?></h3>
+                            </button>
                         </div>
                     <?php
                     }
@@ -100,14 +102,14 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
             </div>
         </div>
 </main>
-<div id="selectedPostId"></div>
+
 <script>
     // Get the list group element
     const postList = document.querySelector('.container');
 
     // Get the element where the selected post ID will be displayed
     const selectedPostIdElement = document.getElementById('selectedPostId');
-
+    const selectedPostUrlElement=document.getElementById('selectedPostUrl');
     // Add click event listener to the list group
     postList.addEventListener('click', function(event) {
         // Find the closest ancestor button element with the class 'list-group-item'
@@ -117,11 +119,42 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
         if (listItemButton) {
             // Get the data-post-id attribute value of the closest button element
             const postId = listItemButton.getAttribute('data-post-id');
-
+            const posturl=listItemButton.getAttribute('posturl');
             // Update the selected post ID element
             selectedPostIdElement.textContent = "Selected Post ID: " + postId;
+            selectedPostUrlElement.textContent=posturl;
         }
     });
+
+    function submitForm() {
+    // Create a form element
+    var form = document.createElement('form');
+    form.setAttribute('action', '../admcontrollpart/ApiController/Post/DeleteController.php'); // Change to your PHP file path
+    form.setAttribute('method', 'get');
+
+    // Create an input field for post ID
+    var postIdInput = document.createElement('input');
+    postIdInput.setAttribute('type', 'hidden'); // Hidden input
+    postIdInput.setAttribute('id', 'postId');
+    postIdInput.setAttribute('name', 'postId');
+    postIdInput.setAttribute('value', selectedPostIdElement.textContent.split(' ')[3]); // Get post ID from the selectedPostIdElement
+
+    // Create an input field for post URL
+    var postUrlInput = document.createElement('input');
+    postUrlInput.setAttribute('type', 'hidden'); // Hidden input
+    postUrlInput.setAttribute('name', 'postUrl');
+    postUrlInput.setAttribute('value', selectedPostUrlElement.textContent);
+
+    // Append input fields to the form
+    form.appendChild(postIdInput);
+    form.appendChild(postUrlInput);
+
+    // Append form to the document body
+    document.body.appendChild(form);
+
+    // Submit the form
+    form.submit();
+}
 </script>
 
 
@@ -189,12 +222,7 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     </div>
     <!-- End Update Modal -->
 
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <!-- Delete modal content -->
-        </div>
-    </div>
+    
 
 <script>
     document.getElementById('signOutBtn').addEventListener('click', function(event) {

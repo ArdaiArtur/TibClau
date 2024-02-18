@@ -1,6 +1,10 @@
 <?php
+
+
+
+
 $url="https://localhost/TibClau/API/api/post/delete.php";
-$post_id =isset($_GET['id']) ? $_GET['id'] : 0;
+$post_id =isset($_GET['postId']) ? $_GET['postId'] : 0;
  if($post_id!=0){
 $data = array('id' => $post_id);
 $json_data = json_encode($data);
@@ -31,4 +35,9 @@ if ($response === false) {
 // Close the cURL resource
 curl_close($ch);
  }
+else
+{
+    echo 'post id is '.$post_id;
+}
+ //header("location: /TibClau/admcontrollpart/admmainpage.php");
 ?>
