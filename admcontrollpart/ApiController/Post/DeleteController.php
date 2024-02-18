@@ -39,5 +39,5 @@ else
 {
     echo 'post id is '.$post_id;
 }
- //header("location: /TibClau/admcontrollpart/admmainpage.php");
+ header("location: /TibClau/admcontrollpart/admmainpage.php");
 ?>
