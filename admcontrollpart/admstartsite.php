@@ -1,6 +1,7 @@
 <?php
     require_once '../config/Databasecon.php';
     require_once '../Model/admlogin.php';
+    ini_set('session.gc_maxlifetime', 300);
     session_set_cookie_params(300);
     session_start();
     if(isset($_POST["submit"])){
