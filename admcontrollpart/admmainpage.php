@@ -1,5 +1,7 @@
-<?php 
+<?php
+session_set_cookie_params(300); 
 session_start();
+
 include_once 'ApiController\Post\LookupController.php';
 
 // Check if the session variables exist and have the expected values
