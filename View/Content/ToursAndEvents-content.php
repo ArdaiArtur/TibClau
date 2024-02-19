@@ -17,15 +17,15 @@ include_once(__DIR__ . '/../../Controller/ApiController/Post/LookupController.ph
             $img_url = !empty($post["img_url"]) ? htmlspecialchars($post["img_url"]) : '\TibClau\Image\PostIMG\no.jpg';
             ?>
             <div class="row mb-5 p-5 bg-light">
-                <div class="col-md-4 ">
+                <div class="col-md-8 ">
                     <!-- Image -->
                     <img src="<?php echo $img_url; ?>" alt="Post Image" class="img-fluid mb-3">
                     <!-- Date -->
                     <div class="news-date">
-                        <?php echo htmlspecialchars($post["expire"]); ?><i class="fa fa-calendar" aria-hidden="true" style="margin-left:4px;"></i>
+                      Date of the trip:  <?php echo htmlspecialchars($post["expire"]); ?><i class="fa fa-calendar" aria-hidden="true" style="margin-left:4px;"></i>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <!-- Title -->
                     <h2 class="news-title"><?php echo htmlspecialchars($post["title"]); ?></h2>
                     <!-- Content -->

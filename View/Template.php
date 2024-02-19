@@ -3,7 +3,7 @@
 ini_set('session.gc_maxlifetime', 300);
 session_set_cookie_params(300);
 session_start();
-
+/*
 // Check if the session variables exist and have the expected values
 if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     $userId = $_SESSION["adm_id"];
@@ -16,7 +16,7 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     // Output other session variables as needed
 } else {
     echo "Session variables not set or incomplete.";
-}
+}*/
 
 
 ?>
