@@ -17,9 +17,9 @@
             <div class="card" style="background-image: linear-gradient(to bottom right, #d7f0fa, #e1fae1);">
                 <div class="card-body">
                     <h2 class="card-title">Contact Information</h2>
-                    <p><strong>Address:</strong> </p>
-                    <p><strong>Phone:</strong> </p>
-                    <p><strong>Email:</strong> </p>
+                    <p><strong>Address: Calea Aradului, Oradea</strong> </p>
+                    <p><strong>Phone: 0747278743</strong> </p>
+                    <p><strong>Email: tibclau@gmail.com</strong> </p>
                 </div>
             </div>
         </div>
