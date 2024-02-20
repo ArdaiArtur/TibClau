@@ -18,7 +18,7 @@ if(isset($_FILES['image'])) {
         if (!file_exists($upload_directory)) {
             mkdir($upload_directory, 0777, true);
         }
-        $good_path="../Image/PostIMG/".$image_name;
+        $good_path="Image/PostIMG/".$image_name;
         // Move the uploaded file to the desired location
         $upload_path = $upload_directory . $image_name;
         move_uploaded_file($image_tmp, $upload_path);

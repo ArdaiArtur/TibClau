@@ -1,5 +1,5 @@
 <?php
-session_set_cookie_params(300); 
+session_set_cookie_params(600); 
 session_start();
 
 include_once 'ApiController\Post\LookupController.php';
@@ -93,7 +93,7 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
                     foreach ($matchingPosts as $post) {  $img_url = !empty($post["img_url"]) ? htmlspecialchars($post["img_url"]) : '\TibClau\Image\PostIMG\no.jpg';?>
                         <div class='col-lg-2 mb-3'>
                             <button type='button' class='list-group-item list-group-item-action' data-post-id='<?php echo htmlspecialchars($post["id"]); ?>' posturl='<?php echo htmlspecialchars($post["img_url"]); ?>'>
-                                <img src='<?php echo htmlspecialchars($post["img_url"]); ?>' alt='Post Image' class='img-fluid'>
+                                <img src='<?php echo'../' . htmlspecialchars($post["img_url"]); ?>' alt='Post Image' class='img-fluid'>
                                 <h3 class='mb-1' ><?php echo htmlspecialchars($post["title"]); ?></h3>
                             </button>
                         </div>

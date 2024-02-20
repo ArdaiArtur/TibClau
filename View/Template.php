@@ -40,7 +40,7 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     }
     // Load page content
     if (isset($pageContent)) {
-        $contentPath = 'Content/' . $pageContent;
+        $contentPath = 'View/Content/' . $pageContent;
         if (file_exists($contentPath)) {
             include $contentPath;
         } else {
