@@ -24,7 +24,7 @@ include_once(__DIR__ . '/../../Controller/ApiController/Post/LookupController.ph
                 </div>
                 <div class="col-md-12 text-center rounded">
                     <!-- Image -->
-                    <img src="<?php echo $img_url; ?>" alt="Post Image" class="img-fluid mb-3 rounded">
+                    <img src="<?php echo $img_url; ?>" alt="Post Image" class="img-fluid mb-3 rounded limit-height">
                     
                 </div>
                 <div class="col-md-12">
