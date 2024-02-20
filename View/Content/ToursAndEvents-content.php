@@ -16,15 +16,15 @@ include_once(__DIR__ . '/../../Controller/ApiController/Post/LookupController.ph
         foreach ($matchingPosts as $post) {
             $img_url = !empty($post["img_url"]) ? htmlspecialchars($post["img_url"]) : '\TibClau\Image\PostIMG\no.jpg';
             ?>
-            <div class="row mb-5 p-5 bg-light">
+            <div class="row mb-5 p-5 bg-light rounded">
                 <div class=" col-md -12 text-center">
                     <!-- Title -->
                     <h2 class="news-title"><?php echo htmlspecialchars($post["title"]); ?></h2>
                     <hr>
                 </div>
-                <div class="col-md-12 text-center">
+                <div class="col-md-12 text-center rounded">
                     <!-- Image -->
-                    <img src="<?php echo $img_url; ?>" alt="Post Image" class="img-fluid mb-3">
+                    <img src="<?php echo $img_url; ?>" alt="Post Image" class="img-fluid mb-3 rounded">
                     
                 </div>
                 <div class="col-md-12">
