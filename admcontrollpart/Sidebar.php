@@ -1,4 +1,4 @@
-<div class="col-md-3 col-lg-2 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark position-fixed vh-100">
+<div class="col-md-3 col-lg-2 d-flex flex-column  flex-shrink-0 p-3 text-white bg-dark position-fixed vh-100">
             <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span class="fs-4">Admin Panel</span>
             </a>
@@ -33,6 +33,11 @@
                 </ul>
             </div>
         </div>
+
+
+
+
+        
 <!-- Upload Modal -->
 <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
     <div class="modal-dialog">
