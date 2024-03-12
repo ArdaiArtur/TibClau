@@ -1,18 +1,53 @@
 <?php
+session_start();
+$upload_path = '';
+if(isset($_FILES['image'])) {
+    // File uploaded successfully
+    $image_name = $_FILES['image']['name'];
+    $image_tmp = $_FILES['image']['tmp_name'];
+    $image_type = $_FILES['image']['type'];
+    $image_size = $_FILES['image']['size'];
+
+    // Check if the file is an image
+    $allowed_extensions = array("jpeg", "png", "gif", "jpg");
+    $uploaded_extension = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
+    
+    if(in_array($uploaded_extension, $allowed_extensions)) {
+        // Move the uploaded file to the desired location
+        $upload_directory = '../../../Image/PostIMG/';
+        if (!file_exists($upload_directory)) {
+            mkdir($upload_directory, 0777, true);
+        }
+        $good_path="Image/PostIMG/".$image_name;
+        // Move the uploaded file to the desired location
+        $upload_path = $upload_directory . $image_name;
+        move_uploaded_file($image_tmp, $upload_path);
+        
+        // Add the image URL to the data array
+        $data['img_url'] = $good_path;
+    } else {
+        echo "Error: Only JPEG, PNG, and GIF images are allowed.";
+    }
+} else {
+    echo "Error: No image uploaded.";
+}
+
+
+
 $title=isset($_POST['title']) ? $_POST['title'] : '';
 $body=isset($_POST['body']) ? $_POST['body'] : '';
-$author=isset($_POST['auth']) ? $_POST['auth'] : '';
+$author = isset($_SESSION["adm_username"]) ? $_SESSION["adm_username"] : '';
 $category_id=isset($_POST['category_id']) ? $_POST['category_id'] : 0;
 $expire=isset($_POST['expire']) ? $_POST['expire'] : null;
-if($title!=''&&$body!=''&&$author!=''&&$category_id!=0&&$expire!=null)
+if($title!=''&&$body!=''&&$author!=''&&$category_id!=0&&$expire!=null&&$upload_path!='')
 {
 $data = array(
     'title' => $title,
     'body' => $body,
     'auth' => $author,
     'category_id' => $category_id,
-    'expire'=>$expire
-
+    'expire'=>$expire,
+    'img_url' => $good_path
 
 );
 
@@ -69,5 +104,5 @@ else if($expire==null)
 {
     echo("no date");
 }
-
+header("location: /TibClau/admcontrollpart/admmainpage.php");
 ?>
