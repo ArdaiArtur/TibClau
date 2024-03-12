@@ -1,13 +1,13 @@
 <?php
-session_set_cookie_params(600); 
+session_set_cookie_params(3000); 
 session_start();
 
-include_once 'ApiController\Post\LookupController.php';
+include_once '../Controller\ApiController\Post\LookupController.php';
 
 // Check if the session variables exist and have the expected values
 if (!isset($_SESSION["adm_id"]) || !isset($_SESSION["adm_username"])) {
     // Redirect to the login page if not logged in
-    header("Location:/TibClau/admcontrollpart/admlogadm.php"); // replace 'login.php' with the actual login page URL
+    header("Location:/TibClau/admcontrollpart/admlogadm.php"); 
     exit();
 }
 // Check if the session variables exist and have the expected values
@@ -97,7 +97,7 @@ if (isset($_SESSION["adm_id"]) && isset($_SESSION["adm_username"])) {
     function submitForm() {
     // Create a form element
     var form = document.createElement('form');
-    form.setAttribute('action', '../admcontrollpart/ApiController/Post/DeleteController.php'); // Change to your PHP file path
+    form.setAttribute('action', '../Controller/ApiController/Post/DeleteController.php'); // Change to your PHP file path
     form.setAttribute('method', 'get');
 
     // Create an input field for post ID

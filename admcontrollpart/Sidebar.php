@@ -49,7 +49,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="../admcontrollpart/ApiController/Post/UploadController.php" enctype="multipart/form-data">
+                <form method="post" action="../Controller/ApiController/Post/UploadController.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" name="title">
